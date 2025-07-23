@@ -1,0 +1,15 @@
+version: '3.7'
+services:
+  bsai:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: sai3
+    tty: true
+    networks:
+      - sai
+
+networks:
+  sai:
+    driver: bridge
+

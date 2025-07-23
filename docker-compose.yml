@@ -1,0 +1,44 @@
+version: '3.7'
+
+services:
+  ubuntu-git:
+    build:
+      context: .
+      dockerfile: sai/Dockerfile
+    container_name: ubuntu-git-container
+    volumes:
+      - ./workspace:/workspace
+    tty: true    
+    networks:
+      - sai
+    restart: always
+
+  saib:
+    hostname: baditha
+    build: .
+    container_name: sai_2
+    volumes:
+      - ./sai:/sai
+    tty: true
+    networks:
+      - sae
+      - sai
+      
+  redis:
+    hostname: 'redis'
+    image: 'redis:alpine'
+    ports:
+      - 6379:6379
+    networks:
+      - tvs_net    
+    restart: always
+
+networks:
+  sai:
+    driver: bridge
+
+  sae:
+    driver: bridge
+    
+  tvs_net:
+    driver: bridge
