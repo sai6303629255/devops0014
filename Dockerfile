@@ -1,5 +1,5 @@
 FROM redhat/ubi8-minimal
 LABEL name sai
-RUN yum update -y
+RUN mkdir sai
 COPY Dockerfile .
 WORKDIR /workspace
